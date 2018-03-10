@@ -18,5 +18,14 @@ module.exports = {
             }
             console.log(result);
         })
+    }, 
+    updateOne: function (tableInput, colName1, value1, colName2, value2) {
+        var queryString = 'UPDATE ?? SET ?? = ?, WHERE ?? = ?;';
+        connection.query(queryString, [tableInput, colName1, value1, colName2, value2], function (err, result) {
+            if (err) {
+                throw err;
+            }
+            console.log(result);
+        })
     }
 }
