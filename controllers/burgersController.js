@@ -6,19 +6,21 @@ var router = express.Router();
 var burger = require('../models/burger.js');
 
 // create all our routes and set up logic within those routes
-router.get("/", function(req, res) {
+var hbsObject;
+router.get('/', function(req, res) {
     burger.selectAll(function(data) {
-        var hbsObject = { // handlebars object?
-            burgers: data
-        }
+         hbsObject = { // handlebars object?
+             burgers: data
+         };
+         console.log(hbsObject);      
+    }); // do we need to render hbsObject? I think so but am going to ignore this for now..
+    res.render('index', hbsObject);
+});
 
-        console.log(hbsObject);
-        res.render('index', hbsObject);
-    });
-})
+
 
 // everything is displayed on index page?
-router.post("/", function (req, res) {
+router.post("/test", function (req, res) {
     burger.insertOne([
         'burger_name', 'devoured'
     ], [
@@ -29,7 +31,7 @@ router.post("/", function (req, res) {
     });
 }); // unsure what insertId is
 
-router.put("/", function (req, res) {
+router.put("/test2", function (req, res) {
     // insert logic here to change devoured from false to true probably...
 });
 
