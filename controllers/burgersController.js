@@ -6,18 +6,15 @@ var router = express.Router();
 var burger = require('../models/burger.js');
 
 // create all our routes and set up logic within those routes
-var hbsObject;
 router.get('/', function(req, res) {
-    burger.selectAll(function(data) {
-         hbsObject = { // handlebars object?
+    burger.all(function(data) {
+         var hbsObject = { // handlebars object?
              burgers: data
          };
-         console.log(hbsObject);      
-    }); // do we need to render hbsObject? I think so but am going to ignore this for now..
-    res.render('index', hbsObject);
+         console.log(hbsObject);
+         res.render('index', hbsObject);      
+    }); 
 });
-
-
 
 // everything is displayed on index page?
 router.post("/test", function (req, res) {

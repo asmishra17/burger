@@ -1,31 +1,37 @@
 var connection = require('./connection.js');
 
 module.exports = {
-    selectAll: function(tableInput) {
-        var queryString = 'SELECT * FROM ??';
-        connection.query(queryString, [tableInput], function(err, result){
+    selectAll: function(tableInput, cb) {
+        var queryString = `SELECT * FROM ${tableInput};`;
+        connection.query(queryString, function(err, result) {
             if (err) {
                 throw err;
             }
-            console.log(result);
+            cb(result);
         });
     },
-    insertOne: function (tableInput, colName1, colName2, value1, value2) {
-        var queryString = 'INSERT INTO ?? (??, ??) VALUES ("?", "?")';
-        connection.query(queryString, [tableInput, colName1, colName2, value1, value2], function (err, result){
+    insertOne: function (tableInput, cols, vals, cb) {
+        var queryString = `INSERT INTO ${tableInput} (${cols.toString()}) VALUES ("${vals[0]}", "${vals[1]}", "${vals[2]}")`
+
+        console.log(queryString);
+
+        connection.query(queryString, function (err, result){
             if (err) {
                 throw err;
             }
-            console.log(result);
+            cb(result);
         })
     }, 
-    updateOne: function (tableInput, colName1, value1, colName2, value2) {
-        var queryString = 'UPDATE ?? SET ?? = ?, WHERE ?? = ?;';
-        connection.query(queryString, [tableInput, colName1, value1, colName2, value2], function (err, result) {
+    updateOne: function (tableInput, cols, vals, condition, cb) {
+        var queryString = `UPDATE ${tableInput} SET ${cols} = ${vals}, WHERE ${condition};`;
+        
+        console.log(queryString);
+
+        connection.query(queryString, function (err, result) {
             if (err) {
                 throw err;
             }
-            console.log(result);
-        })
+            cb(result);
+        });
     }
 }
