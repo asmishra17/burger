@@ -23,12 +23,20 @@
         }
 
         h2 {
-            margin: auto;
             text-align: center;
+            font-family: "Courier New", Courier, monospace
         }
 
         body {
             background-color: #DAE6D2;
+        }
+
+        .textbox {
+            text-align: center;
+        }
+
+        .submit {
+            text-align: center;
         }
     </style>
 </head>
@@ -43,9 +51,26 @@
             <div class = "col-md-12">
                 <h2>buZzworthy burgers</h2>
             </div>
-            {{{ body }}}
+        </div>
+        <br>
+        <div class = "row">
+            <div class = "col-md-12">
+                <div class = "textbox">
+                    <textarea rows="4" cols="50">
+                    </textarea>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class = "row">
+            <div class = "col-md-12">
+                <div class = "submit">
+                    <input class = "submit-button" type = "submit" name = "Submit">
+                </div>
+            </div>
         </div>
     </div>
+    {{{ body }}}
 </body>
 </html>
 
