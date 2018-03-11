@@ -14,11 +14,38 @@
     <!-- Linking my CSS and JS files -->
     <link rel="stylesheet" href="/assets/css/style.css" type="text/css"/>
     <script src="/assets/js/burgers.js"></script>
+    <style>
+        .burger-logo {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
+        }
+
+        h2 {
+            margin: auto;
+            text-align: center;
+        }
+
+        body {
+            background-color: #DAE6D2;
+        }
+    </style>
 </head>
 <body>
-    <img src="assets/images/burger.png" alt="burger logo">
-    <h2>buZzworthy burgers.</h2>
-    {{{ body }}}
+    <div class = "container">
+        <div class = "row">
+            <div class = "col-md-12">
+                <img class = "burger-logo" src="assets/images/burger.png" alt="burger logo">
+            </div>
+        </div>
+        <div class = "row">
+            <div class = "col-md-12">
+                <h2>buZzworthy burgers</h2>
+            </div>
+            {{{ body }}}
+        </div>
+    </div>
 </body>
 </html>
 
