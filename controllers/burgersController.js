@@ -16,8 +16,7 @@ router.get('/', function(req, res) {
     }); 
 });
 
-// everything is displayed on index page
-router.post('/api/burgers', function (req, res) {
+router.post('/api/burgers/', function (req, res) {
     burger.create([
         'burger_name', 'devoured'
     ], [

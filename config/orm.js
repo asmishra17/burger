@@ -11,7 +11,7 @@ module.exports = {
         });
     },
     insertOne: function (tableInput, cols, vals, cb) {
-        var queryString = `INSERT INTO ${tableInput} (${cols.toString()}) VALUES ("${vals[0]}", "${vals[1]}", "${vals[2]}")`
+        var queryString = `INSERT INTO ${tableInput} (${cols.toString()}) VALUES ("${vals[0]}", "${vals[1]}")`
 
         console.log(queryString);
 
