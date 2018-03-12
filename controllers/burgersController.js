@@ -17,19 +17,26 @@ router.get('/', function(req, res) {
 });
 
 // everything is displayed on index page
-router.post("/", function (req, res) {
-    burger.insertOne([
+router.post('/api/burgers', function (req, res) {
+    burger.create([
         'burger_name', 'devoured'
     ], [
-        req.body.burger_name, req.body.devoured
+        req.body.burger_name, '0'
     ], function (result) {
         // send back the ID of the new burger
         res.json({id: result.insertId})
     });
 }); // unsure what insertId is
 
-router.put("/test2", function (req, res) {
-    // insert logic here to change devoured from false to true probably...
+router.put('/api/burgers/:id', function (req, res) {
+    var condition = `id = ${req.params.id};`
+    burger.update(condition, function (result) {
+        if (result.changedRows == 0) {
+            return res.status(404).end();
+        } else {
+            res.status(200).end();
+        }
+    });
 });
 
 module.exports = router;
