@@ -21,3 +21,15 @@ body {
 .submit {
     text-align: center;
 }
+
+ul {
+    list-style-type: none;
+}
+
+.not-eaten {
+    float: left;
+}
+
+.devour-button {
+    margin: 0 5px 0 5px;
+}

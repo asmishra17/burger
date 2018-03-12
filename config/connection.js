@@ -11,10 +11,12 @@ var connection = mysql.createConnection({
 });
 
 connection.connect(function(err) {
+    
     if (err) {
         console.error(`Error connection: ${err.stack}`);
         return;
     }
+    
     console.log(`Connected as id ${connection.threadId}`);
 })
 

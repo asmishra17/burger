@@ -1,18 +1,18 @@
 var express = require('express');
 var router = express.Router();
 
-// import the model (burger.js) to use its database functions
+// import the model to use its database functions
 var burger = require('../models/burger.js');
 
 // create all our routes and set up logic within those routes
 router.get('/', function(req, res) {
     burger.all(function(data) {
-         var hbsObject = { // handlebars object?
+         var hbsObject = { 
              burgers: data
          };
-         console.log(hbsObject);
+         
          res.render('index', hbsObject); 
-         // what happens when we render hbsObject     
+         // ask about what is happening when we render hbsObject     
     }); 
 });
 
@@ -23,7 +23,8 @@ router.post('/api/burgers/', function (req, res) {
         req.body.burger_name, '0'
     ], function (result) {
         // send back the ID of the new burger
-        res.json({id: result.insertId}) // ask about how insertId works
+        res.json({id: result.insertId})
+        // ask about how "result.insertId" works
     });
 }); 
 
