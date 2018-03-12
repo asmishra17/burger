@@ -22,8 +22,8 @@ module.exports = {
             cb(result);
         })
     }, 
-    updateOne: function (tableInput, cols, vals, condition, cb) {
-        var queryString = `UPDATE ${tableInput} SET ${cols} = ${vals}, WHERE ${condition};`;
+    updateOne: function (tableInput, condition, cb) {
+        var queryString = `UPDATE ${tableInput} SET devoured = true WHERE ${condition};`;
         
         console.log(queryString);
 

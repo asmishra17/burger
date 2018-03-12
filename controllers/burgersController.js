@@ -23,12 +23,12 @@ router.post('/api/burgers/', function (req, res) {
         req.body.burger_name, '0'
     ], function (result) {
         // send back the ID of the new burger
-        res.json({id: result.insertId})
+        res.json({id: result.insertId}) // ask about how insertId works
     });
-}); // unsure what insertId is
+}); 
 
 router.put('/api/burgers/:id', function (req, res) {
-    var condition = `id = ${req.params.id};`
+    var condition = `id = ${req.params.id}`
     burger.update(condition, function (result) {
         if (result.changedRows == 0) {
             return res.status(404).end();

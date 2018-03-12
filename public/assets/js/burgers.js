@@ -24,22 +24,22 @@ $(function() {
 
     $('.devour-button').on('click', function (event) {
         
-        var id = $(this).data('id');
-
+        var id = $(event.target).data('id');
+        console.log(id);
+        
         var newDevourState = {
-            devoured: 1
+            devoured: true
         };
 
-        $.ajax(`/api/burgers/${id}`, {
+        $.ajax('/api/burgers/' + id, {
             type: 'PUT',
             data: newDevourState
         }).then(
             function() {
                 console.log(`changed devoured to ${newDevourState}`);
-
                 location.reload();
             }
         )
     })
-});
+}); 
 
